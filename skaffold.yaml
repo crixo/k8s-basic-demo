@@ -1,0 +1,25 @@
+apiVersion: skaffold/v1
+kind: Config
+metadata:
+  name: workshop2020
+build:
+  artifacts:
+  - image: crixo/k8s-basic-demo-todo-app
+    context: src/todo-app
+    docker:
+      dockerfile: Dockerfile
+deploy:
+  kustomize:
+    path: k8s/overlays/dev
+  # kubectl:
+  #   flags:
+  #     global:
+  #     - -k
+  #   manifests:
+  #   - k8s/overlays/dev
+
+profiles:
+  - name: production
+    deploy:
+      kustomize:
+        path: k8s/overlays/production

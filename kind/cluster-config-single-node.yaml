@@ -1,0 +1,15 @@
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+- role: control-plane
+  # image: "kindest/node:v1.13.12@sha256:ad1dd06aca2b85601f882ba1df4fdc03d5a57b304652d0e81476580310ba6289"
+  extraMounts:
+  - containerPath: /foo
+    hostPath: ./kind-data
+    readOnly: false
+    propagation: None
+  extraPortMappings:
+  - containerPort: 30001
+    hostPort: 30001
+    listenAddress: 0.0.0.0
+    protocol: TCP
