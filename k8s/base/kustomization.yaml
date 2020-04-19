@@ -5,7 +5,7 @@ namespace: k8s-basic-demo
 
 resources:
   # https://github.com/kubernetes/kubernetes/issues/68737
-  - mysql-statefulset.yaml
-  - mysql-service.yaml
+  # - mysql-statefulset.yaml
+  # - mysql-service.yaml
   - todo-app-deployment.yaml
   - todo-app-service.yaml

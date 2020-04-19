@@ -14,13 +14,25 @@
 
 - Create the cluster
 ```
-kind create cluster --config ./kind/cluster-config-single-node.yaml --name k8s-basic-demo 
+cd kind
+kind create cluster --config cluster-config-single-node.yaml --name k8s-basic-demo 
+cd ..
 ```
 
 - create namespace for the demo
 ```
 k create ns k8s-basic-demo
 kn k8s-basic-demo
+```
+
+- deploy mysql
+```
+kubectl apply -f k8s/_manual/mysql-statefulset.yaml
+```
+
+- expose locally mysql
+```
+kubectl port-forward service/mysql 3306:3306
 ```
 
 - Run skaffold once

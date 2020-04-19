@@ -22,7 +22,7 @@ ENTRYPOINT ["sh"]
 FROM dev as build
 
 RUN (([ ! -d "${APP_PATH}/vendor" ] && go mod download) || true)
-RUN go build -ldflags="-s -w" -mod vendor -o ${APP_BUILD_NAME} *.go
+RUN go build -ldflags="-s -w" -mod vendor -o ${APP_BUILD_NAME} main.go
 RUN chmod +x ${APP_BUILD_NAME}
 
 #FROM scratch AS prod

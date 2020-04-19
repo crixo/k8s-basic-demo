@@ -15,6 +15,14 @@ spec:
       labels:
         app: todo-app
     spec:
+      initContainers:
+      - name: migration
+        image: crixo/k8s-basic-demo-todo-app
+        args:
+        - --migration-only
+        env:
+          - name: DB_HOST
+            value: "mysql"
       containers:
       - name: app
         image: crixo/k8s-basic-demo-todo-app
@@ -27,3 +35,6 @@ spec:
           limits:
             memory: "256Mi"
             cpu: "256m"
+        env:
+          - name: DB_HOST
+            value: "mysql"

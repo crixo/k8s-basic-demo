@@ -1,4 +1,4 @@
-package main
+package model
 
 import (
 	"regexp"
@@ -7,12 +7,10 @@ import (
 
 var rxEmail = regexp.MustCompile(".+@.+\\..+")
 
-var messages = []Message{}
-
 type Message struct {
 	Email   string
 	Content string
-	Errors  map[string]string
+	Errors  map[string]string `gorm:"-"`
 }
 
 func (msg *Message) Validate() bool {
@@ -28,14 +26,4 @@ func (msg *Message) Validate() bool {
 	}
 
 	return len(msg.Errors) == 0
-}
-
-func (msg *Message) Store() error {
-	message := Message{
-		Email:   msg.Email,
-		Content: msg.Content,
-	}
-	messages = append(messages, message)
-
-	return nil
 }
