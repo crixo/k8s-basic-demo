@@ -2,13 +2,22 @@
 
 ## Dependencies
 
-- go 1.13
+-  [Docker Desktop](https://www.docker.com/products/docker-desktop)  
+   You have to create a docker hub account
 
-- kind v0.6.0 go1.13.4 darwin/amd64
+- [kubectl](https://github.com/kubernetes/kubectl) v1.16.3
 
-- skaffold v1.7.0
+- [kind](https://kind.sigs.k8s.io/) v0.6.0 go1.13.4 darwin/amd64 -  kindest/node v1.16.3 
 
-- kustomize 3.5.4 (due to skaffold)
+- [kustomize](https://github.com/kubernetes-sigs/kustomize) 3.5.4 (required by skaffold)
+
+## DevDependencies
+
+- [skaffold](https://skaffold.dev/docs/install/) v1.7.0
+
+- [kube-ps1](https://github.com/jonmosco/kube-ps1)
+
+- [golang](https://golang.org/doc/install/source) 1.13 (optional)
 
 ## Run
 
@@ -40,12 +49,20 @@ kubectl port-forward service/mysql 3306:3306
 skaffold run
 ```
 
-- Clean all resource within a namespace
+- Check deployment status
 ```
-k delete all --all -n ${NS}
+k get all
 ```
 
 - Delete the cluster
 ```
 kind delete cluster --name k8s-basic-demo 
 ```
+
+## Topics
+
+- [Kubernetes Architecture Overview](https://kubernetes.io/docs/concepts/overview/components/)
+
+- [Configuration](docs/config.md)
+
+- [Workload management](docs/workload.md)
