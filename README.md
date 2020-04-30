@@ -3,7 +3,6 @@
 ## Dependencies
 
 -  [Docker Desktop](https://www.docker.com/products/docker-desktop)  
-   You have to create a docker hub account
 
 - [kubectl](https://github.com/kubernetes/kubectl) v1.16.3
 
@@ -61,8 +60,12 @@ kind delete cluster --name k8s-basic-demo
 
 ## Topics
 
+- [Tools installation](docs/01_tools-installation.md)
+
 - [Kubernetes Architecture Overview](https://kubernetes.io/docs/concepts/overview/components/)
 
-- [Configuration](docs/config.md)
+- [Configuration](docs/02_config.md)
 
-- [Workload management](docs/workload.md)
+- [Workload management](docs/03_workload.md)
+
+- [Ingress Controller](https://kind.sigs.k8s.io/docs/user/ingress/)
