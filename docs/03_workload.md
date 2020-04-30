@@ -38,7 +38,23 @@ kubectl apply -f k8s/_manual/mysql-statefulset.yaml
 ```
 kubectl port-forward service/mysql 3306:3306
 ```
-Browse mysql instance running within the cluster w/ your favorite mysql client
+Browse mysql instance running within the cluster w/ your favorite mysql client.  
+Instead of install a client version on your machine, use docker to expose a web-browser version for a mysql client.  
+Open a new terminal and run the following command:
+```
+cd docker
+docker-compose up
+```
+
+If you decide to follow the docker-way, use the following port-forwarding instead the one above.  
+Open a new terminal and run the following command
+```
+HOST_IP=$(ipconfig getifaddr en0)
+kubectl port-forward --address $HOST_IP service/mysql 3306:3306
+```
+
+> Exercise: Try to deploy phpmyadmin into the k8s cluster connecting to mysql that runs in the cluster as well so you do not need port-forwarding anymore.
+
 
 - Run skaffold once
 ```

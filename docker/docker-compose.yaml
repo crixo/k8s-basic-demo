@@ -1,0 +1,29 @@
+# Docker Compose file Reference (https://docs.docker.com/compose/compose-file/)
+
+version: '3'
+
+# Define services
+services:
+
+  # PhpMyAdmin Service  
+  phpmyadmin:
+    #image: phpmyadmin/phpmyadmin
+    image: phpmyadmin/phpmyadmin:5.0.2-fpm-alpine
+    container_name: phpmyadmin
+    environment:
+      - PMA_ARBITRARY=1
+    # links:
+    #   - mysql
+    # environment:
+    #   PMA_HOST: mysql
+    #   PMA_PORT: 3306
+    restart: always
+    ports:
+      - 8081:80
+    volumes:
+      - /sessions
+    networks:
+      - backend
+
+networks:
+  backend:

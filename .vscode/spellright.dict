@@ -4,3 +4,6 @@ Pesistent
 uri
 kube
 powershell
+bashrc
+kubeconfig
+phpmyadmin
