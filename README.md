@@ -68,6 +68,6 @@ kind delete cluster --name k8s-basic-demo
 
 - [Kubernetes Resources](docs/03_k8s-resources.md)
 
-- [Workload management](docs/03_workload.md)
+- [Workload management](docs/04_workload.md)
 
-- [Ingress Controller](https://kind.sigs.k8s.io/docs/user/ingress/)
+- [Ingress Controller](docs/05_ingress-controller.md)

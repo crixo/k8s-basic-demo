@@ -7,3 +7,5 @@
 cd kind/kind-ingress-controller/
 sh create-cluster.sh
 ```
+
+> Exercise: Try to expose todo-app and phpmyadmin using an ingress.
