@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"io/ioutil"
 	"log"
 	"net/http"
 	"text/template"
@@ -16,6 +17,20 @@ func NewHandler(repository model.Repository) *handler {
 	return &handler{
 		repository: repository,
 	}
+}
+
+func (h handler) Index(w http.ResponseWriter, r *http.Request) {
+	content, err := ioutil.ReadFile("/tmp/k8s-basic-demo-config/my-file.txt")
+	var output string
+	if err != nil {
+		log.Fatal(err)
+		output = "[error]" + err.Error()
+	} else {
+		output = string(content)
+	}
+
+	//fmt.Printf("File contents: %s", content)
+	render(w, "templates/index.html", output)
 }
 
 func (h handler) Home(w http.ResponseWriter, r *http.Request) {

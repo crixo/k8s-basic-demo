@@ -15,6 +15,16 @@ spec:
 
 ---
 
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysql-secret
+type: Opaque
+data:
+  password: cm9vdA==
+
+---
+
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -36,7 +46,10 @@ spec:
         image: mysql:5.7 #5.7.29
         env:
           - name: MYSQL_ROOT_PASSWORD
-            value: root
+            valueFrom:
+              secretKeyRef:
+                name: mysql-secret
+                key: password
         ports:
         - containerPort: 3306
           name: mysql

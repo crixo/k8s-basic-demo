@@ -46,10 +46,11 @@ func main() {
 		repository = model.NewMysqlRepository(db)
 
 		//httpClient := &http.Client{}
-		fs := http.FileServer(http.Dir("static"))
+		//fs := http.FileServer(http.Dir("static"))
 
 		handler := handlers.NewHandler(repository)
-		http.Handle("/", fs)
+		//http.Handle("/", fs)
+		http.Handle("/", http.HandlerFunc(handler.Index))
 		http.Handle("/home", http.HandlerFunc(handler.Home))
 		http.Handle("/send", http.HandlerFunc(handler.Send))
 		http.Handle("/confirmation", http.HandlerFunc(handler.Confirmation))

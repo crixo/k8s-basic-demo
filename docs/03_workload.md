@@ -7,6 +7,13 @@ The use case solution will be used to walk you through the kubernetes basic reso
 
 ## Execution
 
+- Create the cluster
+```
+cd kind
+kind create cluster --config cluster-config-single-node.yaml --name k8s-basic-demo 
+cd ..
+```
+
 - create namespace for the demo
 ```
 k create ns k8s-basic-demo
@@ -60,6 +67,12 @@ kubectl port-forward --address $HOST_IP service/mysql 3306:3306
 ```
 skaffold run --tag='latest'
 ```
+
+or keep it running. Skaffold will watch code changes and will kick/queue build&deploy according to your changes.
+```
+skaffold run dev
+```
+stopping the watcher will also clean the deployed workload.
 
 - Interact with the webapp
 

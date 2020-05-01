@@ -28,6 +28,9 @@ spec:
         image: crixo/k8s-basic-demo-todo-app
         ports:
           - containerPort: 3000
+        volumeMounts:
+          - name: config-volume
+            mountPath: /tmp/k8s-basic-demo-config
         resources:
           requests:
             memory: "128Mi"
@@ -38,3 +41,9 @@ spec:
         env:
           - name: DB_HOST
             value: "mysql"
+      volumes:
+        - name: config-volume
+          configMap:
+            # Provide the name of the ConfigMap containing the files you want
+            # to add to the container
+            name: todo-app-configmap

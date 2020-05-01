@@ -9,3 +9,4 @@ resources:
   # - mysql-service.yaml
   - todo-app-deployment.yaml
   - todo-app-service.yaml
+  - todo-app-configmap.yaml
