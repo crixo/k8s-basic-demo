@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: phpmyadmin
+  name: phpmyadmin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: phpmyadmin
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: phpmyadmin
+    spec:
+      containers:
+      - image: phpmyadmin/phpmyadmin:5.0.2 #:5.0.2-fpm-alpine
+        name: phpmyadmin
+        env:
+        - name: PMA_ARBITRARY
+          value: "1"
+        ports:
+        - containerPort: 80
+        resources: {}
+status: {}

@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: phpmyadmin
+  annotations:
+    # nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  rules:
+  - http:
+      paths:
+      #- path: /(/|$)(.*)
+      -  backend:
+          serviceName: phpmyadmin
+          servicePort: 5080
+    host: phpmyadmin.192.168.1.15.xip.io # YOUR-SEGMENT-CHOISE.YOUR-LOCAL-IP.xip.io -> see https://xip.io 

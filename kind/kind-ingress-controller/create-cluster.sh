@@ -12,8 +12,6 @@ if [ "$DEL" == "D" ]; then
     exit
 fi
 
-kind delete cluster --config 3nodes-ingress-controller.yaml --name $CLUSTER_NAME
-
 kind create cluster --config 3nodes-ingress-controller.yaml --name $CLUSTER_NAME
 
 nginxctrlimage='quay.io/kubernetes-ingress-controller/nginx-ingress-controller:master'
