@@ -142,6 +142,19 @@ The use case solution will be used to walk you through the kubernetes basic reso
 
     after pushing and kind downloading from there the pod todo-app-xxxx is up&running
 
+    You could also tag the image with a non-latest tag (eg. kind)
+    ```
+    docker tag crixo/k8s-basic-demo-todo-app:latest crixo/k8s-basic-demo-todo-app:kind 
+    ```
+    and load that image in kind
+    ```
+    kind load docker-image crixo/k8s-basic-demo-todo-app:kind --name k8s-basic-demo
+    ```
+    now you can deploy using a dedicate kustomize overlays
+    ```
+    kubectl apply -k k8s/overlays/kind/
+    ```
+
   - Check everything is working as expected
     ```
     k get all
