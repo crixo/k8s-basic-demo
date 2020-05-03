@@ -64,6 +64,8 @@ The use case solution will be used to walk you through the kubernetes basic reso
 
 
 - Run skaffold once
+  We noticed potential issue w/ skaffold on WSL not able to reach docker host using the standard env variable ```DOCKER_HOST=tcp://localhost:2375``` use ```DOCKER_HOST=tcp://127.0.0.1:2375``` instead.
+
   ```
   skaffold run --tag='latest'
   ```
@@ -127,9 +129,18 @@ The use case solution will be used to walk you through the kubernetes basic reso
 
     Noticed the docker images built by skaffold
     ```
-    docker images | grep kk8s-basic-demo
+    docker images | grep k8s-basic-demo
     ```
     *latest* tag has been added in order to use the existing yaml directly with kustomize w/o required skaffold to deploy into the cluster
+
+    kind does not allow to load and use *latest* image.
+    todo-app-xxxx is in status *ImagePullBackOff* due to missing image with tag *latest*
+    So let's push it to docker hun so king we'll get from there
+    ```
+    docker push crixo/k8s-basic-demo-todo-app
+    ```
+
+    after pushing and kind downloading from there the pod todo-app-xxxx is up&running
 
   - Check everything is working as expected
     ```
