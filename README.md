@@ -62,12 +62,12 @@ kind delete cluster --name k8s-basic-demo
 
 - [Tools installation](docs/01_tools-installation.md)
 
-- [Kubernetes Architecture Overview](https://kubernetes.io/docs/concepts/overview/components/)
+- [Kubernetes Architecture Overview](docs/02_k8s-components.md)
 
-- [Configuration](docs/02_config.md)
+- [Configuration](docs/03_config.md)
 
-- [Kubernetes Resources](docs/03_k8s-resources.md)
+- [Kubernetes Resources](docs/04_k8s-resources.md)
 
-- [Workload management](docs/04_workload.md)
+- [Workload management](docs/05_workload.md)
 
-- [Ingress Controller](docs/05_ingress-controller.md)
+- [Ingress Controller](docs/06_ingress-controller.md)
