@@ -10,6 +10,7 @@ I use *grep* command a lot. That works only w/ bash, if you use powershell [sear
 - [WSL](https://itnext.io/setting-up-the-kubernetes-tooling-on-windows-10-wsl-d852ddc6699c) - (Win user only) - Optional  
   Ubuntu16.04 should be fine, but I suggest you to start with 18.04 instead.  
   Someone had issue installing docker-compose via python. [Installing it via curl](https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-ubuntu-16-04) works just fine.
+  If by mistake you followed [this tutorial](https://medium.com/@sebagomez/installing-the-docker-client-on-ubuntus-windows-subsystem-for-linux-612b392a44c4) to install WSL, the env var ```DOCKER_HOST=localhost:2375``` won't work with skaffold: it should be ```DOCKER_HOST=tcp://localhost:2375``` instead
 
 - [kind](https://kind.sigs.k8s.io/docs/user/quick-start).  
   Version v0.7.0 should be fine but all the code has been tested against version v0.6.0 so install that one instead.  
@@ -28,7 +29,7 @@ I use *grep* command a lot. That works only w/ bash, if you use powershell [sear
   The k8s official documentation is the [best reference for kubectl](https://kubernetes.io/docs/reference/kubectl/cheatsheet/).  
   In order to understand the version strategy around the kubernetes ecosystem you could use [this article](https://medium.com/@cristiano.deg/pinning-k8s-subcomponents-with-go-mod-1ad087731f83) and the links within it pointing to the github issue of kubernetes subcomponents such as kubectl or client-go.
 
-- [kustomize](https://github.com/kubernetes-sigs/kustomize) 3.5.4  
+- [kustomize](https://github.com/kubernetes-sigs/kustomize/blob/master/docs/INSTALL.md) 3.5.4  
   kustomize lets you customize raw, template-free YAML files for multiple purposes, leaving the original YAML untouched and usable as is.  
   Since v1.14 the kustomize build system has been included in kubectl. Installing kustomize explicitly is required only if you'd like to have a full class experience using skaffold.
 
