@@ -64,7 +64,7 @@ The use case solution will be used to walk you through the kubernetes basic reso
 
 
 - Run skaffold once
-  We noticed potential issue w/ skaffold on WSL not able to reach docker host using the standard env variable ```DOCKER_HOST=tcp://localhost:2375``` use ```DOCKER_HOST=tcp://127.0.0.1:2375``` instead.
+  We noticed potential issue w/ skaffold on WSL not able to reach docker host using the standard env variable ```DOCKER_HOST=localhost:2375``` use ```DOCKER_HOST=tcp://127.0.0.1:2375``` instead.
 
   ```
   skaffold run --tag='latest'
@@ -133,7 +133,7 @@ The use case solution will be used to walk you through the kubernetes basic reso
     ```
     *latest* tag has been added in order to use the existing yaml directly with kustomize w/o required skaffold to deploy into the cluster
 
-    kind does not allow to load and use *latest* image.
+    Kind [does not allow to load and use *latest* image](https://kind.sigs.k8s.io/docs/user/quick-start/#loading-an-image-into-your-cluster). Actually it's k8s itself that always try to get images with tag latest even if they are already present in the node.  
     todo-app-xxxx is in status *ImagePullBackOff* due to missing image with tag *latest*
     So let's push it to docker hun so king we'll get from there
     ```
@@ -153,6 +153,11 @@ The use case solution will be used to walk you through the kubernetes basic reso
     now you can deploy using a dedicate kustomize overlays
     ```
     kubectl apply -k k8s/overlays/kind/
+    ```
+
+    CleanUp images created by skaffold CI/CD
+    ```
+    docker images | grep crixo/k8s-basic-demo | awk '{print $3}' | xargs docker rmi -f
     ```
 
   - Check everything is working as expected
